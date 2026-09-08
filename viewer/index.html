@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dragão Branco Aerodesign</title>
+
+    <script type="module"
+        src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js">
+    </script>
+
+    <style>
+
+        body {
+            margin: 0;
+            background: #222;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Menu superior */
+
+        #menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+
+            background: white;
+            padding: 15px;
+
+            border-radius: 10px;
+
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        }
+
+        #menu label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        #modelo {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+        }
+
+        /* Visualizador */
+
+        model-viewer {
+            width: 100vw;
+            height: 100vh;
+
+            background-color: #dddddd;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Menu -->
+
+    <div id="menu">
+
+        <label for="modelo">
+            Modelo:
+        </label>
+
+        <select id="modelo">
+
+            <option value="../modelos/AeronaveDB2022.glb">
+                Aeronave DB 2022
+            </option>
+
+            <option value="../modelos/AeronaveDB2023.glb">
+                Aeronave DB 2023
+            </option>
+
+            <option value="../modelos/AeronaveDB2024.glb">
+                Aeronave DB 2024
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <!-- Modelo 3D -->
+
+    <model-viewer
+        id="visualizador"
+        src="../modelo/AeronaveDB2022.glb"
+        camera-controls
+        auto-rotate
+        shadow-intensity="1"
+        alt="Modelo 3D do Dragão Branco Aerodesign">
+
+    </model-viewer>
+
+
+    <!-- Código para trocar o modelo -->
+
+    <script>
+
+        const seletor = document.getElementById("modelo");
+
+        const visualizador = document.getElementById("visualizador");
+
+
+        seletor.addEventListener("change", function() {
+
+            visualizador.src = this.value;
+
+        });
+
+    </script>
+
+</body>
+
+</html>
